@@ -1,0 +1,111 @@
+{
+  "info": {
+    "name": "API Clientes - Taller Plataformas Web",
+    "description": "Colección de pruebas para la API REST de clientes. Semana 9.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/", "host": ["localhost"], "port": "3000", "path": [""] }
+      }
+    },
+    {
+      "name": "GET - Listar todos los clientes",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/clientes", "host": ["localhost"], "port": "3000", "path": ["api","clientes"] }
+      }
+    },
+    {
+      "name": "GET - Obtener cliente por ID",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/clientes/1", "host": ["localhost"], "port": "3000", "path": ["api","clientes","1"] }
+      }
+    },
+    {
+      "name": "GET - Cliente no encontrado (404)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/clientes/9999", "host": ["localhost"], "port": "3000", "path": ["api","clientes","9999"] }
+      }
+    },
+    {
+      "name": "POST - Crear cliente nuevo",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Carlos Rojas\",\n  \"email\": \"carlos.rojas@email.com\",\n  \"telefono\": \"+56911223344\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/clientes", "host": ["localhost"], "port": "3000", "path": ["api","clientes"] }
+      }
+    },
+    {
+      "name": "POST - Email duplicado (409 Conflict)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Otro Usuario\",\n  \"email\": \"carlos.rojas@email.com\",\n  \"telefono\": \"+56999999999\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/clientes", "host": ["localhost"], "port": "3000", "path": ["api","clientes"] }
+      }
+    },
+    {
+      "name": "POST - Validación fallida (400)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"\",\n  \"email\": \"no-es-un-email\",\n  \"telefono\": \"+56911223344\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/clientes", "host": ["localhost"], "port": "3000", "path": ["api","clientes"] }
+      }
+    },
+    {
+      "name": "PUT - Actualizar cliente",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Carlos Rojas Actualizado\",\n  \"telefono\": \"+56900000000\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/clientes/1", "host": ["localhost"], "port": "3000", "path": ["api","clientes","1"] }
+      }
+    },
+    {
+      "name": "PUT - Cliente no encontrado (404)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"No Existe\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/api/clientes/9999", "host": ["localhost"], "port": "3000", "path": ["api","clientes","9999"] }
+      }
+    },
+    {
+      "name": "DELETE - Eliminar cliente",
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "http://localhost:3000/api/clientes/1", "host": ["localhost"], "port": "3000", "path": ["api","clientes","1"] }
+      }
+    },
+    {
+      "name": "DELETE - Cliente no encontrado (404)",
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "http://localhost:3000/api/clientes/9999", "host": ["localhost"], "port": "3000", "path": ["api","clientes","9999"] }
+      }
+    }
+  ]
+}
