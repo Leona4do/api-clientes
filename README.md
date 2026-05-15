@@ -7,7 +7,7 @@
 
 ## 📋 Descripción
 
-API REST ful para la gestión de clientes con operaciones CRUD completas, validación de datos, manejo de errores HTTP y consultas parametrizadas para prevenir inyección SQL.
+API RESTful para la gestión de clientes con operaciones CRUD completas, validación de datos, manejo de errores HTTP y consultas parametrizadas para prevenir inyección SQL.
 
 ---
 
